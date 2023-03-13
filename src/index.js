@@ -3,6 +3,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
+import './database';
+import productosRoute from './routes/productos.routes';
 // settings
 // creo una instancia de express
 const app = express();
@@ -27,6 +29,4 @@ app.use(express.static(path.join(__dirname, '../public/')));
 
 // crear una ruta
 
-app.get('/', (req, res)=>{
-    res.send('ola soi el servidor xdxdxd')
-})
+app.use('/api/cafeteria',productosRoute);

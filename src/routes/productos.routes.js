@@ -7,6 +7,6 @@ const router = Router();
 
 // creo las rutas
 
-router.route('/',).get(cafeteriaCtrl.getPrueba);
+router.route('/',).get(cafeteriaCtrl.getPrueba).post(cafeteriaCtrl.postPrueba);
 
 export default router;

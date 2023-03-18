@@ -1,4 +1,4 @@
-import mongoose, {Scheme} from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
 const productoSchema = new Schema({
     nombreProducto: {
@@ -12,7 +12,7 @@ const productoSchema = new Schema({
         required: true
     },
     categoria: {
-        type: string,
+        type: String,
         required: true
     }
 });

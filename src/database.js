@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const url = 'mongodb://127.0.0.1:27017/cafeteria';
 
-mongoose.connect(url);
+mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true});
 
 // guardar conexion en una variable
 

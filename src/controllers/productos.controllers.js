@@ -35,4 +35,15 @@ cafeteriaCtrl.post = async (req, res) => {
 
 }
 
+cafeteriaCtrl.listarProductos = async (req, res) => {
+    try {
+        // obtener un arreglo con todos los documentos
+        const arregloProductos = await Producto.find();
+        res.status(200).json(arregloProductos);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json('No te voy a mostra los datos papilo')
+    }
+}
+
 export default cafeteriaCtrl;

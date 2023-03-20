@@ -3,10 +3,6 @@ import Producto from '../models/productos.models';
 
 const cafeteriaCtrl = {};
 
-cafeteriaCtrl.getPrueba = (req,res)=>{
-    res.send("aca esta el controler del get papilo");
-}
-
 cafeteriaCtrl.post = async (req, res) => {
     console.log(req.body);
 
@@ -43,6 +39,43 @@ cafeteriaCtrl.listarProductos = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json('No te voy a mostra los datos papilo')
+    }
+}
+
+cafeteriaCtrl.eliminarProducto = async (req,res) => {
+    try {
+        console.log(req.params.id);
+        await Producto.findByIdAndDelete(req.params.id);
+        res.status(200).json('Ya lo emo fusilao al objeto ese chango');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json('Ese id no existe, deja de hace invento, pelotudo')
+    }
+}
+
+cafeteriaCtrl.obtenerProducto = async (req,res) => {
+    try {
+        const productoEncontrado = await Producto.findById(req.params.id);
+        res.status(200).json(productoEncontrado);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json('No se lo a encontrao al producto chango, volve a intenta');
+    }
+}
+
+
+cafeteriaCtrl.editarProducto = async (req,res) => {
+    try {
+        console.log(req.body);
+        // validar
+
+        // actualizar
+        await Producto.findByIdAndUpdate(req.params.id,req.body);
+
+        res.status(200).json('Se cambio el producto   '+req.body);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json('No se lo a podio actualiza al producto chango')
     }
 }
 
